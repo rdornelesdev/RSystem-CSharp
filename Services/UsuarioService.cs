@@ -108,16 +108,16 @@ class UsuarioService
                     string alteracaoEmail = Console.ReadLine()!;
                     var validacaoEmail = new EmailAddressAttribute();
 
-                    if(string.IsNullOrWhiteSpace(alteracaoEmail))
+                    if (string.IsNullOrWhiteSpace(alteracaoNome) && string.IsNullOrWhiteSpace(alteracaoIdade) && string.IsNullOrWhiteSpace(alteracaoEmail))
+                    {
+                        Console.WriteLine("Nenhum campo foi alterado.");
+                        break;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(alteracaoEmail))
                     {
                         alteracaoEmail = dadosJson[indice].Email ?? string.Empty;
                     }
-
-                    // if(string.IsNullOrWhiteSpace(alteracaoNome) && string.IsNullOrWhiteSpace(alteracaoIdade) && string.IsNullOrWhiteSpace(alteracaoEmail))
-                    // {
-                    //     Console.WriteLine("Nenhum campo foi alterado.");
-                    //     validation = false;
-                    // }
 
 
                     if (!string.IsNullOrWhiteSpace(nomeFormat) && nomeFormat.All(char.IsLetter) || idadeCast >= 1 && idadeCast <= 120 || validacaoEmail.IsValid(alteracaoEmail))
