@@ -57,6 +57,7 @@ class Main
                     break;
 
                 case 5:
+                    Console.Clear();
                     Console.WriteLine("Saindo...");
                     validacao = false;
                     break;
