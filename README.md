@@ -1,25 +1,44 @@
 # CRUD App
-Descrição
-▪︎ Aplicando console em C# que implementa operações CRUD de usuários com autenticação e armazenamento em arquivos JSON. Ideal para aprendizado e exemplos de arquitetura pequena.
+Aplicação de console em C# que implementa operações CRUD de usuários com autenticação segura e armazenamento em arquivos JSON. Desenvolvido para demonstrar boas práticas de arquitetura, segurança e manipulação de dados.
 
-Principais funcionalidades
-▪︎ Criar, ler, atualizar e excluir usuários.
-▪︎ Autenticação com hashing de senhas.
-▪︎ Persistência em arquivos JSON (dados locais).
-▪︎ Serviços organizados (ex.: serviço de usuários, serviço de autenticação).
+---
 
-Requisitos
-▪︎ .NET 8 SDK ou superior.
-▪︎ Sistema operacional: Linux / macOS / Windows
+## 🚀 Principais Funcionalidades
+- **CRUD Completo:** Criação, leitura, atualização e exclusão de usuários.
+- **Autenticação Segura:** Implementação de hashing de senhas (PBKDF2/SHA-256) para proteger credenciais.
+- **Persistência de Dados:** Armazenamento local estruturado em arquivos JSON.
+- **Arquitetura Organizada:** Lógica de negócio separada em serviços e modelos para melhor manutenção.
 
-Estrutura do projeto (resumo)
-▪︎ Program.cs / Main.cs -> ponto de entrada.
-▪︎ Services -> lógica de aplicação (AuthService, UsuarioService, etc).
-▪︎ PasswordHasher.cs -> hash de senhas e verificação.
-▪︎ Models -> classes de domínio (Usuario, UsuarioAuth, etc.).
-▪︎ Data -> arquivos JSON de persistência (ex.: usuários).
+---
 
-Uso 
-▪︎ Criar usuários: siga as instruções interativas ao executar a aplicação.
-▪︎ Login: use o fluxo de autenticação fornecido pelo AuthService.
-▪︎ Local de dados: os usuários são gravados em arquivos JSON dentro da pasta "Data".
+## 🏗️ Estrutura do Projeto
+- `Program.cs` / `Main.cs`: Ponto de entrada da aplicação.
+- `Services/`: Lógica de aplicação (AuthService, UsuarioService, etc.).
+- `Security/`: Classe `PasswordHasher.cs` para segurança de senhas.
+- `Models/`: Classes de domínio (Usuario, UsuarioAuth, etc.).
+- `Data/`: Arquivos JSON de persistência.
+
+---
+
+## ⚙️ Requisitos
+- .NET 8 SDK ou superior.
+- Compatível com: Linux, macOS e Windows.
+
+---
+
+## 💡 Como Usar
+1. **Execução:** Siga as instruções interativas após rodar o comando `dotnet run`.
+2. **Autenticação:** O fluxo de login é gerenciado pelo `AuthService`.
+3. **Dados:** Os usuários são gravados automaticamente na pasta `Data/` em formato JSON.
+
+---
+*Projeto desenvolvido para fins de aprendizado.*
+
+
+
+
+
+
+
+
+
