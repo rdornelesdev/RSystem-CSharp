@@ -13,40 +13,44 @@ class AuthService : Caminho
 
     public void selectAuth()
     {
-        Console.WriteLine("----------");
-        Console.WriteLine("Seja bem-vindo!");
-        Console.WriteLine("----------");
-
         string[] opts = ["Login", "Cadastro"];
 
-        int idx = 0;
-        foreach (string x in opts)
+        bool validacao = true;
+        while (validacao)
         {
-            Console.WriteLine($"{idx + 1}. {x}");
-            idx++;
-        }
+            Console.WriteLine("----------");
+            Console.WriteLine("Seja bem-vindo!");
+            Console.WriteLine("----------");
 
-        Console.Write("Selecione uma opção: ");
-        string loginCadastro = Console.ReadLine()!;
-
-        if (int.TryParse(loginCadastro, out int loginCadastroCast) && loginCadastroCast > 0 && loginCadastroCast <= opts.Length)
-        {
-            switch (loginCadastroCast)
+            int idx = 0;
+            foreach (string x in opts)
             {
-                case 1:
-                    Auth();
-                    break;
+                Console.WriteLine($"{idx + 1}. {x}");
+                idx++;
+            }
 
-                case 2:
-                    AuthCreate();
-                    break;
+            Console.Write("Selecione uma opção: ");
+            string loginCadastro = Console.ReadLine()!;
+
+            if (int.TryParse(loginCadastro, out int loginCadastroCast) && loginCadastroCast > 0 && loginCadastroCast <= opts.Length)
+            {
+                Console.Clear();
+                switch (loginCadastroCast)
+                {
+                    case 1:
+                        Auth();
+                        break;
+
+                    case 2:
+                        AuthCreate();
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("❌ Selecione corretamente!");
             }
         }
-        else
-        {
-            Console.WriteLine("❌ Selecione corretamente!");
-        }
-
     }
 
     public void Auth()
@@ -58,27 +62,38 @@ class AuthService : Caminho
         Console.WriteLine("Login");
         Console.WriteLine("----------");
 
-        Console.Write("Digite o usuário: ");
-        string usuario = Console.ReadLine()!;
-
-        Console.Write("Digite a senha: ");
-        string senha = Console.ReadLine()!;
-
-        if (!string.IsNullOrWhiteSpace(usuario) && !string.IsNullOrWhiteSpace(senha))
+        bool validacao = true;
+        while (validacao)
         {
-            var usuarioEncontrado = dadosJsonCadastro.FirstOrDefault(x => x.Usuario == usuario);
+            Console.Write("Digite o usuário: ");
+            string usuario = Console.ReadLine()!;
 
-            if (usuarioEncontrado is not null && PasswordHasher.VerifyPassword(senha, usuarioEncontrado.Senha ?? string.Empty))
+            Console.Write("Digite a senha: ");
+            string senha = Console.ReadLine()!;
+
+            if (!string.IsNullOrWhiteSpace(usuario) && !string.IsNullOrWhiteSpace(senha))
             {
-                Console.Clear();
-                Console.WriteLine($"✅ Sucesso! Seja bem-víndo, {usuario}!");
-                Main main = new();
-                main.MainFnc();
+                var usuarioEncontrado = dadosJsonCadastro.FirstOrDefault(x => x.Usuario == usuario);
+
+                if (usuarioEncontrado is not null && PasswordHasher.VerifyPassword(senha, usuarioEncontrado.Senha ?? string.Empty))
+                {
+                    Console.Clear();
+                    Console.WriteLine($"✅ Sucesso! Seja bem-víndo, {usuario}!");
+                    Main main = new();
+                    main.MainFnc();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("❌ Usuário ou senha incorretos.");
+                }
             }
             else
             {
-                Console.WriteLine("Usuário ou senha incorretos.");
+                Console.Clear();
+                Console.WriteLine("❌ Preencha os campos corretamente!");
             }
+            validacao = false;
         }
     }
 
