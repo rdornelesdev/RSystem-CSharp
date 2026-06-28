@@ -1,4 +1,6 @@
 using UsuarioModel;
+using AuthModel;
+
 
 namespace main;
 
