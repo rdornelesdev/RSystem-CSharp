@@ -1,0 +1,11 @@
+services:
+  crud-app:
+    build: .
+    stdin_open: true # Permite interagir com o terminal (console)
+    tty: true # Necessáiro para os comandos de console funcionarem
+    # Adicionamos estas linhas abaixo para forçar o modo interativo
+    environment:
+      - DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION=1
+    volumes:
+      - ./Data:/app/Data
+# Necessário habilitar as funções anteriores, pois se trata de uma aplicação console.
