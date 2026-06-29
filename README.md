@@ -20,9 +20,19 @@ Aplicação de console em C# que implementa operações CRUD de usuários com au
 
 ---
 
-## ⚙️ Requisitos
-- .NET 8 SDK ou superior.
-- Compatível com: Linux, macOS e Windows.
+## 🐳 Como rodar com Docker
+Se você não quer instalar o .NET na sua máquina, pode rodar o projeto usando Docker:
+
+1. Certifique-se de ter o [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado.
+2. Na pasta do projeto, execute:
+   ```bash
+   docker build -t crud-app .
+   docker run -it --rm -v $(pwd)/Data:/app/Data crud-app
+   ```
+   Caso prefira usar o orquestrador (ideal para terminais nativos do sistema):
+   ```bash
+   docker-compose up --build --attach crud-app
+   ```
 
 ---
 
@@ -33,12 +43,3 @@ Aplicação de console em C# que implementa operações CRUD de usuários com au
 
 ---
 *Projeto desenvolvido para fins de aprendizado.*
-
-
-
-
-
-
-
-
-
